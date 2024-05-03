@@ -1,31 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import { useNavigate, Link } from 'react-router-dom';
-import Textbox from '../components/Textbox';
-import Button from '../components/Button';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import Textbox from "../components/Textbox";
+import Button from "../components/Button";
+import { useSelector } from "react-redux";
 
 const Login = () => {
   const { user } = useSelector((state) => state.auth);
-  const [error, setError] = useState('');
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   const navigate = useNavigate();
 
   const submitHandler = async (data) => {
-    try {
-      const res = await axios.post('/api/login', data);
-      console.log(res.data); // Handle successful login
-      // Optionally, you can redirect the user to another page upon successful login
-      navigate('/dashboard');
-    } catch (error) {
-      console.error(error.response.data); // Handle login error
-      setError(error.response.data.message); // Set error message to display to the user
-    }
+    console.log("submit");
   };
 
   useEffect(() => {
-    user && navigate('/dashboard');
-  }, [user, navigate]);
+    user && navigate("/dashboard");
+  }, [user]);
 
   return (
     <div className='w-full min-h-screen flex items-center justify-center flex-col lg:flex-row bg-[#f3f4f6]'>
@@ -36,15 +32,17 @@ const Login = () => {
             <span className='flex gap-1 py-1 px-3 border rounded-full text-sm md:text-base bordergray-300 text-gray-600'>
               Manage all your task in one place!
             </span>
-            <p className='flex flex-col gap-0 md:gap-4 text-4xl md:text-6xl 2xl:text-7xl font-black text-center text-gray-700'>
+            <p className='flex flex-col gap-0 md:gap-4 text-4xl md:text-6xl 2xl:text-7xl font-black text-center text-blue-700'>
               <span>Cloud-Based</span>
               <span>Task Manager</span>
             </p>
+
             <div className='cell'>
               <div className='circle rotate-in-up-left'></div>
             </div>
           </div>
         </div>
+
         {/* right side */}
         <div className='w-full md:w-1/3 p-4 md:p-1 flex flex-col justify-center items-center'>
           <form
@@ -52,14 +50,14 @@ const Login = () => {
             className='form-container w-full md:w-[400px] flex flex-col gap-y-8 bg-white px-10 pt-14 pb-14'
           >
             <div className=''>
-              <p className='text-gray-600 text-3xl font-bold text-center'>
-                Login
+              <p className='text-blue-600 text-3xl font-bold text-center'>
+                Welcome back!
               </p>
               <p className='text-center text-base text-gray-700 '>
-                Keep all your credential safe.
+                Keep all your credential safge.
               </p>
             </div>
-            {error && <p className='text-red-500 text-sm'>{error}</p>}
+
             <div className='flex flex-col gap-y-5'>
               <Textbox
                 placeholder='email@example.com'
@@ -67,10 +65,10 @@ const Login = () => {
                 name='email'
                 label='Email Address'
                 className='w-full rounded-full'
-                register={register('email', {
-                  required: 'Email Address is required!',
+                register={register("email", {
+                  required: "Email Address is required!",
                 })}
-                error={errors.email ? errors.email.message : ''}
+                error={errors.email ? errors.email.message : ""}
               />
               <Textbox
                 placeholder='your password'
@@ -78,21 +76,20 @@ const Login = () => {
                 name='password'
                 label='Password'
                 className='w-full rounded-full'
-                register={register('password', {
-                  required: 'Password is required!',
+                register={register("password", {
+                  required: "Password is required!",
                 })}
-                error={errors.password ? errors.password.message : ''}
+                error={errors.password ? errors.password.message : ""}
               />
+
               <span className='text-sm text-gray-500 hover:text-blue-600 hover:underline cursor-pointer'>
                 Forget Password?
               </span>
-              <Link to='/signup' className='text-sm text-gray-500 hover:text-blue-600 hover:underline cursor-pointer'>
-                Create an account
-              </Link>
+
               <Button
                 type='submit'
                 label='Submit'
-                className='w-full h-10 bg-gray-500 text-white rounded-full hover:text-gray-600 hover:underline cursor-pointer'
+                className='w-full h-10 bg-blue-700 text-white rounded-full'
               />
             </div>
           </form>
