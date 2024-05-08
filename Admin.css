@@ -1,0 +1,51 @@
+/* Admin.css */
+.admin-container {
+    margin: 20px;
+  }
+  
+  .admin-header {
+    margin-bottom: 10px;
+  }
+  
+  .error-message {
+    color: red;
+    margin-bottom: 10px;
+  }
+  
+  .user-list {
+    margin-bottom: 20px;
+  }
+  
+  .user-list-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .user-info {
+    margin-bottom: 5px;
+  }
+  
+  .delete-button {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .add-user-form {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 20px;
+  }
+  
+  .add-user-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
